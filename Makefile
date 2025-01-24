@@ -10,7 +10,8 @@ install:
 
 # Run linting
 lint:
-	flake8 .
+    flake8 --exclude=.venv .
+
 
 # Run tests
 test:
