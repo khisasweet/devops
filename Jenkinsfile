@@ -13,12 +13,12 @@ pipeline {
         }
         stage('Lint') {
             steps {
-                sh 'make lint'
+                sh './.venv/bin/flake8 .'
             }
         }
         stage('Run Tests') {
             steps {
-                sh 'make test'
+                sh './.venv/bin/pytest'
             }
         }
         stage('Build Docker Image') {
