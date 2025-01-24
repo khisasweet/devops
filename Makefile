@@ -13,7 +13,8 @@ lint:
 
 # Run tests
 test:
-	$(VENV)/bin/pytest
+	PYTHONPATH=$(PWD) $(VENV)/bin/pytest
+
 
 # Build Docker image
 docker-build:
