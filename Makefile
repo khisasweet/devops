@@ -5,11 +5,11 @@ PYTHON = python3
 install:
 	$(PYTHON) -m venv $(VENV)
 	$(VENV)/bin/pip install --upgrade pip
-	$(VENV)/bin/pip install -r requirements.txt
+	$(VENV)/bin/pip install -r requirements.txt flake8
 
 # Run linting
 lint:
-	flake8 --exclude=.venv .
+	$(VENV)/bin/flake8 --exclude=.venv .
 
 # Run tests
 test:
