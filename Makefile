@@ -26,5 +26,6 @@ docker-run:
 
 # Clean up Docker images and containers
 clean:
-	docker rm -f $$(docker ps -aq) || true
-	docker rmi -f $$(docker images -q flask-app) || true
+	docker ps -aq | xargs -r docker rm -f || true
+	docker images -q flask-app | xargs -r docker rmi -f || true
+
