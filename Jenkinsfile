@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/khisasweet/devops.git', branch: 'main'
+                git branch: 'main', url: 'https://github.com/khisasweet/devops.git'
             }
         }
         stage('Install Dependencies') {
