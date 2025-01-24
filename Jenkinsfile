@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Clone Repository') {
-            steps {
-                git branch: 'main', url: 'https://github.com/khisasweet/devops.git'
-            }
-        }
         stage('Install Dependencies') {
             steps {
                 sh 'make install'
@@ -13,13 +8,13 @@ pipeline {
         }
         stage('Lint') {
             steps {
-                sh 'flake8 --exclude=.venv'
+                // Use the virtual environment's flake8 binary
+                sh '.venv/bin/flake8 --exclude=.venv .'
             }
-         }
-
+        }
         stage('Run Tests') {
             steps {
-                sh './.venv/bin/pytest'
+                sh '.venv/bin/pytest'
             }
         }
         stage('Build Docker Image') {
@@ -35,10 +30,6 @@ pipeline {
     }
     post {
         always {
-            echo 'Pipeline execution complete.'
-        }
-        cleanup {
-            echo 'Cleaning up resources.'
             sh 'make clean'
         }
     }
