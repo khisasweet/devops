@@ -1,6 +1,12 @@
 # Install dependencies
+VENV = .venv
+PYTHON = python3
+
 install:
-	pip install -r requirements.txt
+	$(PYTHON) -m venv $(VENV)
+	$(VENV)/bin/pip install --upgrade pip
+	$(VENV)/bin/pip install -r requirements.txt
+
 
 # Run linting
 lint:
