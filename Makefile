@@ -7,15 +7,13 @@ install:
 	$(VENV)/bin/pip install --upgrade pip
 	$(VENV)/bin/pip install -r requirements.txt
 
-
 # Run linting
 lint:
-    flake8 --exclude=.venv .
-
+	flake8 --exclude=.venv .
 
 # Run tests
 test:
-	pytest
+	$(VENV)/bin/pytest
 
 # Build Docker image
 docker-build:
@@ -29,4 +27,3 @@ docker-run:
 clean:
 	docker ps -aq | xargs -r docker rm -f || true
 	docker images -q flask-app | xargs -r docker rmi -f || true
-
