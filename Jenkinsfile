@@ -13,9 +13,10 @@ pipeline {
         }
         stage('Lint') {
             steps {
-                sh './.venv/bin/flake8 .'
+                sh 'flake8 --exclude=.venv'
             }
-        }
+         }
+
         stage('Run Tests') {
             steps {
                 sh './.venv/bin/pytest'
