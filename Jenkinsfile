@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                sh '.venv/bin/pytest'
+                sh 'PYTHONPATH=$(pwd) .venv/bin/pytest'
             }
         }
         stage('Build Docker Image') {
